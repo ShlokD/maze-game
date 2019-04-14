@@ -4,7 +4,10 @@
   "description": "",
   "main": "babel.config.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build-js": "rollup -c rollup.config.js",
+    "build-css": "postcss css/main.css > dist/main.css",
+    "build": "npm run build-css && npm run build-js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,10 @@
     "@babel/preset-env": "^7.4.3",
     "babel-jest": "^24.7.1",
     "cssnano": "^4.1.10",
-    "jest": "^24.7.1"
+    "jest": "^24.7.1",
+    "rollup": "^1.10.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-uglify": "^6.0.2"
   }
 }
