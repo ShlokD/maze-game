@@ -17,7 +17,7 @@ if(workbox) {
   );
 
   workbox.routing.registerRoute(
-    `\\`,
+    new RegExp('\\'),
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'html-cache',
     })
