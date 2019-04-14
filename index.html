@@ -4,21 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>Invisible Maze</title>
-  <meta name="description" content="">
+  <meta name="description" content="Invisible Maze Game">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="shortcut icon" href='favicon.ico'>
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
   <div class="instructions">
     <h1>Invisible Maze</h1>
-    <p>Use Up, Down, Left and Right Arrows to move the piece around the
-      invisible maze and find all empty blocks.
+    <details>
+      <summary>Instructions</summary>
+      <p>Use Up, Down, Left and Right Arrows to move the piece around the
+        invisible maze and find all empty blocks.
 
-      The score shows the blocks you've found and the blocks yet to be found.
+        The score shows the blocks you've found and the blocks yet to be found.
 
-      Good Luck!
-    </p>
+        Good Luck!
+      </p>
+    </details>
+
+    <div class="controls">
+      <button data-direction='38'>&#8593;</button>
+      <div class="left-right">
+        <button data-direction="37">&#8592;</button>
+        <button data-direction="39">&#8594;</button>
+      </div>
+      <button data-direction="40">&#8595;</button>
+
+    </div>
   </div>
   <div id="board">
     <div id="piece"></div>

@@ -24,11 +24,12 @@ export default class {
     this.pieceEl = document.querySelector("#piece");
     this.scoreEl = document.querySelector("#score");
     this.availableEl = document.querySelector("#available");
+    this.buttons = document.querySelectorAll('.controls button');
     this.board = new Board();
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.start = this.start.bind(this);
-
     this.currentPosition = { posX: 0, posY: 0 };
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
 
   }
 
@@ -48,12 +49,9 @@ export default class {
     this.pieceEl.style.transform = `translate(${this.currentPosition.posX}px, ${this.currentPosition.posY}px)`;
   }
 
-  handleKeyPress(ev) {
-    ev.preventDefault();
-    const {keyCode} = ev;
-    if (!coords[keyCode]) return false;
-
-    const { direction, ui } = coords[keyCode];
+  setUI(action) {
+    if(!coords[action]) return false;
+    const { direction, ui } = coords[action];
 
     const shouldMovePiece = this.board.movePiece(direction);
     if(shouldMovePiece) {
@@ -62,10 +60,24 @@ export default class {
     }
   }
 
+  handleKeyPress(ev) {
+    ev.preventDefault();
+    const {keyCode} = ev;
+    this.setUI(keyCode);
+  }
+
+  handleButtonClick(ev) {
+    const { direction } = ev.target.dataset;
+    this.setUI(direction);
+  }
+
   start() {
     this.board.initLayout();
     this.setScoreText();
     this.setAvailableText();
     document.addEventListener('keydown', this.handleKeyPress);
+    this.buttons.forEach((button) => {
+      button.addEventListener('click', this.handleButtonClick);
+    })
   }
 }
