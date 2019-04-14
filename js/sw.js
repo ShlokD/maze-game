@@ -11,14 +11,14 @@ if(workbox) {
 
   workbox.routing.registerRoute(
     new RegExp('\\.css$'),
-    new workbox.strategies.CacheFirst({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'css-cache',
     })
   );
 
   workbox.routing.registerRoute(
     '/',
-    new workbox.strategies.CacheFirst({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'html-cache',
     })
   );
